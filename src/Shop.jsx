@@ -1,22 +1,19 @@
-export default function Main(){
+import { Link } from "react-router-dom"
+import Navbar from "./header"
+export default function Home(){
 
 
 
 
     return(
         <div>
-            <header>
-                <h1>Robnite shop</h1>
-                <ul>
-                    <li>Home</li>
-                    <li>Products</li>
-                    <li>About</li>
-                </ul>
-                <div className="pics">
-                <img src="./src/assets/magnify.svg" alt="" />
-                <img src="./src/assets/cart-outline.svg" alt="" />
+           <Navbar/>
+            <main>
+                <div className="text">
+                <h1>Welcome to Robnite</h1>
                 </div>
-            </header>
+              
+            </main>
 
         </div>
     )
