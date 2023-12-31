@@ -1,0 +1,22 @@
+body,html{
+margin: 0;
+padding: 0;
+}
+img{
+    width: 25px;
+}
+header{
+    display: flex;
+    min-width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    background-color: bisque;
+}
+ul,li{
+    list-style: none;
+    text-decoration: none;
+}
+ul{
+    display: flex;
+    gap: 100px;
+}
