@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom"
 export default function Navbar(){
+
+    function handleClick(){
+        
+    }
+
 return(
     <>
     <header>
@@ -11,12 +16,9 @@ return(
                 </ul>
                 <div className="pics">
                 <img src="./src/assets/magnify.svg" alt="" />
-                <img src="./src/assets/cart-outline.svg" alt="" />
+                <img onClick={handleClick} src="./src/assets/cart-outline.svg" alt="" />
                 </div>
             </header>
-    
-    
-    
     </>
 )
 }
