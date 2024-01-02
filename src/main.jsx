@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx'
 import Home from './Shop.jsx';
 import Product from './product.jsx'
+import "./index.css"
 
 import About from './about.jsx';
 import ErrorPage from './errorElement.jsx';

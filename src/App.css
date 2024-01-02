@@ -13,7 +13,7 @@ header{
     min-width: 100vw;
     justify-content: space-between;
     align-items: center;
-    background-color: bisque;
+    
     height: 9vh;
 }
 ul,li,a{
@@ -93,12 +93,16 @@ max-width: 350px;
   }
   .sidebar{
     width: 20vw;
-    height: 100vh;
+    height: 100dvh;
     position: absolute;
-    right: 0;
+    top: 0;
+    right: 50%;
     z-index: 2;
-    background-color: black;
+    background-color: wheat;
   }
   #root{
     position: relative;
+  }
+  li:hover{
+    text-decoration: underline;
   }

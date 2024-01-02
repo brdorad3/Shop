@@ -13,7 +13,7 @@ export default function Home(){
            
             <main>
                 <div className="text">
-                <h1>Welcome to Robnite</h1>
+                <h1 className="text-4xl mt-10" >Welcome to Robnite</h1>
                 </div>
               
             </main>
