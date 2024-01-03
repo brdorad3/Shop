@@ -1,19 +1,31 @@
 import Navbar from "./header"
-
-import { Outlet } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
 
 export default function ProductsPage() {
   const [error, setError] = useState(null);
   const [items, setItems] = useState(null);
   const [cart, setCart] = useState(0);
+  const [item, setitem] = useState([]);
+  const [addedItems, setAddedItems] = useState([]);
 
-  function handleChange(e){
-setCart(e.target.value);
-console.log(cart)
+function handleClick(tem){
+  if (!item.find((addedItem) => addedItem.id === tem.id)) {
+    setitem([...item, tem]);
   }
-  
+}
+
+  function handleChange(e, itemId) {
+    const updatedItems = items.map((item) =>
+      item.id === itemId
+        ? {
+            ...item,
+            quantity: parseInt(e.target.value, 10) || 0, // Ensure it's a valid number or default to 0
+          }
+        : item
+    );
+    setItems(updatedItems);
+    console.log(items)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,36 +34,40 @@ console.log(cart)
           "https://fakestoreapi.com/products/category/electronics",
           { mode: "cors" }
         );
-
         if (!response.ok) {
           throw new Error("Server Error");
         }
-
         const data = await response.json();
-        setItems(data);
+        const peopleWithImages = data.map((person) => {
+          return {
+            ...person,
+            quantity:1,
+            isOpen:false,
+          };
+        });
+        setItems(peopleWithImages);
       } catch (error) {
         setError(error);
       }
     };
-
     fetchData();
   }, []);
   return (
     <div>
-      <Navbar />
-      
+      <Navbar items={items} item={item} />
       <div className="allItems">
       {items ? (
         items.map((item) => (
-          <div className="items" key={item.id}>
-            
+          <div className="items  bg-gray-300" key={item.id}>
+            {console.log(item)}
             <img src={item.image} className="products" alt={item.title} />
             <h3>{item.title}</h3>
             <div className="price">
           <p>${item.price}</p>
           <div className="cart">
-          <input onChange={handleChange} type="number" max={10}/>
-            <div className="button">Add to cart <img src="./src/assets/cart-outline.svg" alt="" /> </div>
+          <input  onChange={(e) => handleChange(e, item.id)} type="number" className="bg-purple-400" max={10} min={0} placeholder="0"/>
+         
+            <div onClick={()=>handleClick(item)} className="button">Add to cart <img src="./src/assets/cart-outline.svg" alt="" /> </div>
             </div>
             </div>
           </div>
