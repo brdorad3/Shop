@@ -2,11 +2,11 @@ import Navbar from "./header"
 import { useEffect, useState } from "react";
 
 export default function ProductsPage() {
-  const [error, setError] = useState(null);
+  
   const [items, setItems] = useState(null);
-  const [cart, setCart] = useState(0);
+  
   const [item, setitem] = useState([]);
-  const [addedItems, setAddedItems] = useState([]);
+  
 
 function handleClick(tem){
   if (!item.find((addedItem) => addedItem.id === tem.id)) {
@@ -47,11 +47,12 @@ function handleClick(tem){
         });
         setItems(peopleWithImages);
       } catch (error) {
-        setError(error);
+        alert(error)
       }
     };
     fetchData();
   }, []);
+  console.log(items)
   return (
     <div>
       <Navbar items={items} item={item} />
@@ -59,7 +60,7 @@ function handleClick(tem){
       {items ? (
         items.map((item) => (
           <div className="items  bg-gray-300" key={item.id}>
-            {console.log(item)}
+            
             <img src={item.image} className="products" alt={item.title} />
             <h3>{item.title}</h3>
             <div className="price">

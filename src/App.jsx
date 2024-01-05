@@ -5,7 +5,7 @@ import './App.css'
 
 import Home from './Shop'
 import Product from './product'
-
+import About from './about'
 
 function App() {
   
@@ -13,7 +13,7 @@ function App() {
   return (
     <>
    <Home/>
-
+   
     </>
   )
 }

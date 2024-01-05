@@ -5,6 +5,7 @@ import App from './App.jsx'
 import Home from './Shop.jsx';
 import Product from './product.jsx'
 import "./index.css"
+import Cart from './cart.jsx';
 
 import About from './about.jsx';
 import ErrorPage from './errorElement.jsx';
@@ -12,7 +13,7 @@ import ErrorPage from './errorElement.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
     errorElement:<ErrorPage/>,
   },
   {
