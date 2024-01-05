@@ -52,21 +52,22 @@ function handleClick(tem){
     };
     fetchData();
   }, []);
-  console.log(items)
+
   return (
     <div>
       <Navbar items={items} item={item} />
       <div className="allItems">
       {items ? (
         items.map((item) => (
-          <div className="items  bg-gray-300" key={item.id}>
-            
+          <div className="items  bg-white" key={item.id}>
+            <div className="imgs">
             <img src={item.image} className="products" alt={item.title} />
+            </div>
             <h3>{item.title}</h3>
             <div className="price">
           <p>${item.price}</p>
           <div className="cart">
-          <input  onChange={(e) => handleChange(e, item.id)} type="number" className="bg-purple-400" max={10} min={0} placeholder="0"/>
+          <input  onChange={(e) => handleChange(e, item.id)} type="number"  max={10} min={0} placeholder="0"/>
          
             <div onClick={()=>handleClick(item)} className="button">Add to cart <img src="./src/assets/cart-outline.svg" alt="" /> </div>
             </div>

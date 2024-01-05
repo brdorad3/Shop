@@ -5,22 +5,33 @@ import { useEffect } from 'react'
 
 export default function Cart({ items, item  }) {
   const [open, setOpen] = useState(true)
-  const [products, setProducts] = useState(item?item:[])
-  
+  const [products, setProducts] = useState([]);
+
   const handleRemove = (productId) => {
     setProducts((prevProducts) =>
       prevProducts.filter((product) => product.id !== productId)
     );
-    console.log(products);
   };
 
   const handleClearCart = () => {
     setProducts([]);
   };
 
-  if (products === undefined) {
-    return <p>Loading...</p>;
-  }
+  useEffect(() => {
+    const storedItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+    setProducts(storedItems);
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("cartItems", JSON.stringify(products));
+  }, [products]);
+
+  useEffect(() => {
+    if (item) {
+      setProducts(item);
+      console.log(item)
+    }
+  }, [item]);
 
   return (
     <Transition.Root show={open} as={Fragment}>
